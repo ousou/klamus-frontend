@@ -3,7 +3,7 @@ import './App.css';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import axios from 'axios';
-
+import {Tabs, Tab, LeftTabs} from 'pui-react-tabs';
 
 const serverAddress = 'http://localhost:8080/'
 
@@ -25,21 +25,28 @@ class App extends Component {
           });
         })
   }
-
   render() {
     return (
       <div className="main-container">
-        <div className="header">
+        <header className="header">
           <h2>Klassisen musiikin levytietokanta</h2>
-        </div>
-        <div className="content">
+        </header>
+      <Tabs className="tab-container" defaultActiveKey={1}>
+
+        <Tab eventKey={1} title="Säveltäjät">
           <h3>Säveltäjät</h3>
           <ReactTable className="content-table"
-    				data={this.state.data}
-    				columns={composerColumns}
-    			/>
-        </div>
+            data={this.state.data}
+            columns={composerColumns}
+          />
+        </Tab>
+        <Tab eventKey={2} title="Syötä uusi levy">
+          <h3>Syötä uusi levy</h3>
+          <span>Tähän stuffia</span>
+        </Tab>
+      </Tabs>
       </div>
+
     );
   }
 }
