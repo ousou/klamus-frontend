@@ -34,11 +34,13 @@ class App extends Component {
       <Tabs className="tab-container" defaultActiveKey={1}>
 
         <Tab eventKey={1} title="Säveltäjät">
-          <h3>Säveltäjät</h3>
-          <ReactTable className="content-table"
-            data={this.state.data}
-            columns={composerColumns}
-          />
+          <div>
+            <h3>Säveltäjät</h3>
+            <ReactTable className="content-table"
+              data={this.state.data}
+              columns={composerColumns}
+            />
+          </div>
         </Tab>
         <Tab eventKey={2} title="Syötä uusi levy">
           <h3>Syötä uusi levy</h3>
