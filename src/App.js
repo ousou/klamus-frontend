@@ -8,77 +8,93 @@ import 'purecss/build/pure-min.css';
 
 const serverAddress = 'http://localhost:8080/'
 
+class RecordFormInput extends Component {
+  render() {
+    return (
+      <div className="pure-control-group">
+        <label>
+         {this.props.label}
+         <input id={this.props.id} type="text" placeholder={this.props.placeholder} value={this.props.value} onChange={this.props.handleChange}/>
+        </label>
+      </div>
+    );
+  }
+}
+
 class RecordForm extends Component {
   render() {
     return (
       <form className="pure-form pure-form-stacked record-form" onSubmit={this.props.handleFormSubmit}>
         <fieldset>
-          <div className="pure-control-group">
-            <label>
-             Levyn nimi
-             <input id="name" type="text" placeholder="Levyn nimi" value={this.props.value} onChange={this.handleChange}/>
-            </label>
-          </div>
-          <div className="pure-control-group">
-            <label>
-             Kuvaus
-             <input id="description" type="text" placeholder="Yleiskuvaus levystä" value={this.props.value} onChange={this.props.handleChange}/>
-            </label>
-          </div>
-          <div className="pure-control-group">
-            <label>
-             Tallennuspaikka
-             <input id="storage_place" type="text" value={this.props.value} onChange={this.props.handleChange}/>
-            </label>
-          </div>
-          <div className="pure-control-group">
-            <label>
-             Alitallennuspaikka
-             <input id="sub_storage_place" type="text" value={this.props.value} onChange={this.props.handleChange}/>
-            </label>
-          </div>
-          <div className="pure-control-group">
-            <label>
-             Säveltäjä
-             <input id="composer" type="text" value={this.props.value} onChange={this.props.handleChange}/>
-            </label>
-          </div>
-          <div className="pure-control-group">
-            <label>
-             Levyn kunto
-             <input id="condition" type="text" value={this.props.value} onChange={this.props.handleChange}/>
-            </label>
-          </div>
-          <div className="pure-control-group">
-            <label>
-             Levykoodi
-             <input id="code" type="text" value={this.props.value} onChange={this.props.handleChange}/>
-            </label>
-          </div>
-          <div className="pure-control-group">
-            <label>
-             Levy-yhtiö
-             <input id="record_label" type="text" value={this.props.value} onChange={this.props.handleChange}/>
-            </label>
-          </div>
-          <div className="pure-control-group">
-            <label>
-             Levytyyppi
-             <input id="record_type" placeholder="LP" type="text" value={this.props.value} onChange={this.props.handleChange}/>
-            </label>
-          </div>
-          <div className="pure-control-group">
-            <label>
-             Julkaisuvuosi
-             <input id="year" type="text" value={this.props.value} onChange={this.props.handleChange}/>
-            </label>
-          </div>
-          <div className="pure-control-group">
-            <label>
-             Lisätiedot
-             <input id="extra_info" type="text" value={this.props.value} onChange={this.props.handleChange}/>
-            </label>
-          </div>
+          <RecordFormInput
+            label="Levyn nimi"
+            id="name"
+            placeholder="Levyn nimi"
+            value={this.props.value}
+            onChange={this.props.handleChange}
+          />
+          <RecordFormInput
+            label="Kuvaus"
+            id="description"
+            placeholder="Yleiskuvaus levystä"
+            value={this.props.value}
+            onChange={this.props.handleChange}
+          />
+          <RecordFormInput
+            label="Tallennuspaikka"
+            id="storage_place"
+            value={this.props.value}
+            onChange={this.props.handleChange}
+          />
+          <RecordFormInput
+            label="Aliallennuspaikka"
+            id="sub_storage_place"
+            value={this.props.value}
+            onChange={this.props.handleChange}
+          />
+          <RecordFormInput
+            label="Säveltäjä"
+            id="composer"
+            value={this.props.value}
+            onChange={this.props.handleChange}
+          />
+          <RecordFormInput
+            label="Levyn kunto"
+            id="condition"
+            value={this.props.value}
+            onChange={this.props.handleChange}
+          />
+          <RecordFormInput
+            label="Levykoodi"
+            id="code"
+            value={this.props.value}
+            onChange={this.props.handleChange}
+          />
+          <RecordFormInput
+            label="Levy-yhtiö"
+            id="record_label"
+            value={this.props.value}
+            onChange={this.props.handleChange}
+          />
+          <RecordFormInput
+            label="Levytyyppi"
+            id="record_type"
+            placeholder="LP"
+            value={this.props.value}
+            onChange={this.props.handleChange}
+          />
+          <RecordFormInput
+            label="Julkaisuvuosi"
+            id="year"
+            value={this.props.value}
+            onChange={this.props.handleChange}
+          />
+          <RecordFormInput
+            label="Lisätiedot"
+            id="extra_info"
+            value={this.props.value}
+            onChange={this.props.handleChange}
+          />
           <div className="pure-control-group">
             <button type="submit" className="pure-button pure-button-primary">Tallenna</button>
           </div>
