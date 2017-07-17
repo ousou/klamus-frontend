@@ -4,6 +4,7 @@ import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import axios from 'axios';
 import {Tabs, Tab, LeftTabs} from 'pui-react-tabs';
+import 'purecss/build/pure-min.css';
 
 const serverAddress = 'http://localhost:8080/'
 
@@ -39,11 +40,11 @@ class App extends Component {
     var value = event.target.value;
     switch (id) {
       case 'name':
-      this.setState({
-        formData: {
-          composer: value
-        }
-      });
+        this.setState({
+          formData: {
+            composer: value
+          }
+        });
         break;
       case 'composer':
         this.setState({
@@ -75,17 +76,79 @@ class App extends Component {
           </Tab>
           <Tab eventKey={2} title="Syötä uusi levy">
             <h3>Syötä uusi levy</h3>
-            <form onSubmit={this.handleFormSubmit}>
-               <label>
-                 Levyn nimi:
-                 <input id="name" type="text" value={this.state.value} onChange={this.handleChange}/>
-               </label>
-               <label>
-                 Säveltäjä:
-                 <input id="composer" type="text" value={this.state.value} onChange={this.handleChange}/>
-               </label>
-               <input type="submit" value="Submit" />
-             </form>
+            <form className="pure-form pure-form-stacked record-form" onSubmit={this.handleFormSubmit}>
+              <fieldset>
+                <div className="pure-control-group">
+                  <label>
+                   Levyn nimi
+                   <input id="name" type="text" placeholder="Levyn nimi" value={this.state.value} onChange={this.handleChange}/>
+                  </label>
+                </div>
+                <div className="pure-control-group">
+                  <label>
+                   Kuvaus
+                   <input id="description" type="text" placeholder="Yleiskuvaus levystä" value={this.state.value} onChange={this.handleChange}/>
+                  </label>
+                </div>
+                <div className="pure-control-group">
+                  <label>
+                   Tallennuspaikka
+                   <input id="storage_place" type="text" value={this.state.value} onChange={this.handleChange}/>
+                  </label>
+                </div>
+                <div className="pure-control-group">
+                  <label>
+                   Alitallennuspaikka
+                   <input id="sub_storage_place" type="text" value={this.state.value} onChange={this.handleChange}/>
+                  </label>
+                </div>
+                <div className="pure-control-group">
+                  <label>
+                   Säveltäjä
+                   <input id="composer" type="text" value={this.state.value} onChange={this.handleChange}/>
+                  </label>
+                </div>
+                <div className="pure-control-group">
+                  <label>
+                   Levyn kunto
+                   <input id="condition" type="text" value={this.state.value} onChange={this.handleChange}/>
+                  </label>
+                </div>
+                <div className="pure-control-group">
+                  <label>
+                   Levykoodi
+                   <input id="code" type="text" value={this.state.value} onChange={this.handleChange}/>
+                  </label>
+                </div>
+                <div className="pure-control-group">
+                  <label>
+                   Levy-yhtiö
+                   <input id="record_label" type="text" value={this.state.value} onChange={this.handleChange}/>
+                  </label>
+                </div>
+                <div className="pure-control-group">
+                  <label>
+                   Levytyyppi
+                   <input id="record_type" placeholder="LP" type="text" value={this.state.value} onChange={this.handleChange}/>
+                  </label>
+                </div>
+                <div className="pure-control-group">
+                  <label>
+                   Julkaisuvuosi
+                   <input id="year" type="text" value={this.state.value} onChange={this.handleChange}/>
+                  </label>
+                </div>
+                <div className="pure-control-group">
+                  <label>
+                   Lisätiedot
+                   <input id="extra_info" type="text" value={this.state.value} onChange={this.handleChange}/>
+                  </label>
+                </div>
+                <div className="pure-control-group">
+                  <button type="submit" className="pure-button pure-button-primary">Tallenna</button>
+                </div>
+              </fieldset>
+            </form>
           </Tab>
         </Tabs>
       </div>
