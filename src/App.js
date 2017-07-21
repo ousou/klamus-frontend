@@ -5,6 +5,8 @@ import 'react-table/react-table.css';
 import axios from 'axios';
 import {Tabs, Tab, LeftTabs} from 'pui-react-tabs';
 import 'purecss/build/pure-min.css';
+import Select from 'react-select';
+import 'react-select/dist/react-select.css';
 
 const serverAddress = 'http://localhost:8080/'
 
