@@ -133,6 +133,9 @@ class App extends Component {
 
   handleFormSubmit(event) {
     alert('Data was submitted: ' + JSON.stringify(this.state.formData));
+    this.setState({
+      formData: {}
+    });
     event.preventDefault();
   }
 
