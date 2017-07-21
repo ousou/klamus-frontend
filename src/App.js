@@ -14,7 +14,7 @@ class RecordFormInput extends Component {
       <div className="pure-control-group">
         <label>
          {this.props.label}
-         <input id={this.props.id} type="text" placeholder={this.props.placeholder} value={this.props.value} onChange={this.props.handleChange}/>
+         <input id={this.props.id} type="text" placeholder={this.props.placeholder} value={this.props.value} onChange={this.props.onChange}/>
         </label>
       </div>
     );
@@ -133,12 +133,13 @@ class App extends Component {
 
   handleChange(event) {
     var id = event.target.id;
+
     var value = event.target.value;
     switch (id) {
       case 'name':
         this.setState({
           formData: {
-            composer: value
+            name: value
           }
         });
         break;
