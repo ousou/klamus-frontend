@@ -18,7 +18,7 @@ class RecordFormInput extends Component {
           id={this.props.id}
           type="text"
           placeholder={this.props.placeholder}
-          value={this.props.value}
+          value={this.props.formData[this.props.id]}
           onChange={this.props.onChange}/>
         </label>
       </div>
@@ -35,69 +35,69 @@ class RecordForm extends Component {
             label="Levyn nimi"
             id="name"
             placeholder="Levyn nimi"
-            value={this.props.value}
+            formData={this.props.formData}
             onChange={this.props.handleChange}
           />
           <RecordFormInput
             label="Kuvaus"
             id="description"
             placeholder="Yleiskuvaus levystä"
-            value={this.props.value}
+            formData={this.props.formData}
             onChange={this.props.handleChange}
           />
           <RecordFormInput
             label="Hyllypaikka"
             id="storage_place"
-            value={this.props.value}
+            formData={this.props.formData}
             onChange={this.props.handleChange}
           />
           <RecordFormInput
             label="Alihyllypaikka"
             id="sub_storage_place"
-            value={this.props.value}
+            formData={this.props.formData}
             onChange={this.props.handleChange}
           />
           <RecordFormInput
             label="Säveltäjä"
             id="composer"
-            value={this.props.value}
+            formData={this.props.formData}
             onChange={this.props.handleChange}
           />
           <RecordFormInput
             label="Levyn kunto"
             id="condition"
-            value={this.props.value}
+            formData={this.props.formData}
             onChange={this.props.handleChange}
           />
           <RecordFormInput
             label="Levykoodi"
             id="code"
-            value={this.props.value}
+            formData={this.props.formData}
             onChange={this.props.handleChange}
           />
           <RecordFormInput
             label="Levy-yhtiö"
             id="record_label"
-            value={this.props.value}
+            formData={this.props.formData}
             onChange={this.props.handleChange}
           />
           <RecordFormInput
             label="Levytyyppi"
             id="record_type"
             placeholder="LP"
-            value={this.props.value}
+            formData={this.props.formData}
             onChange={this.props.handleChange}
           />
           <RecordFormInput
             label="Julkaisuvuosi"
             id="year"
-            value={this.props.value}
+            formData={this.props.formData}
             onChange={this.props.handleChange}
           />
           <RecordFormInput
             label="Lisätiedot"
             id="extra_info"
-            value={this.props.value}
+            formData={this.props.formData}
             onChange={this.props.handleChange}
           />
           <div className="pure-control-group">
@@ -114,7 +114,7 @@ class App extends Component {
     super();
     this.state = {
       data: [],
-      formData: []
+      formData: {}
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -138,25 +138,13 @@ class App extends Component {
 
   handleChange(event) {
     var id = event.target.id;
-
     var value = event.target.value;
-    switch (id) {
-      case 'name':
-        this.setState({
-          formData: {
-            name: value
-          }
-        });
-        break;
-      case 'composer':
-        this.setState({
-          formData: {
-            composer: value
-          }
-        });
-        break;
-    }
 
+    var newFormDataObject = JSON.parse(JSON.stringify(this.state.formData))
+    newFormDataObject[id] = value;
+    this.setState({
+      formData: newFormDataObject
+    });
   }
 
   render() {
@@ -179,7 +167,7 @@ class App extends Component {
           <Tab eventKey={2} title="Syötä uusi levy">
             <h3>Syötä uusi levy</h3>
             <RecordForm
-              value={this.state.value}
+              formData={this.state.formData}
               handleFormSubmit={this.handleFormSubmit}
               handleChange={this.handleChange}
             />
