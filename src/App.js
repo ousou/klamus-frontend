@@ -14,7 +14,12 @@ class RecordFormInput extends Component {
       <div className="pure-control-group">
         <label>
          {this.props.label}
-         <input id={this.props.id} type="text" placeholder={this.props.placeholder} value={this.props.value} onChange={this.props.onChange}/>
+         <input
+          id={this.props.id}
+          type="text"
+          placeholder={this.props.placeholder}
+          value={this.props.value}
+          onChange={this.props.onChange}/>
         </label>
       </div>
     );
@@ -41,13 +46,13 @@ class RecordForm extends Component {
             onChange={this.props.handleChange}
           />
           <RecordFormInput
-            label="Tallennuspaikka"
+            label="Hyllypaikka"
             id="storage_place"
             value={this.props.value}
             onChange={this.props.handleChange}
           />
           <RecordFormInput
-            label="Aliallennuspaikka"
+            label="Alihyllypaikka"
             id="sub_storage_place"
             value={this.props.value}
             onChange={this.props.handleChange}
