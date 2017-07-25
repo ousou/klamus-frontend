@@ -130,7 +130,9 @@ class App extends Component {
           th.setState({
             data: result.data
           });
-        })
+        }).catch(function (error) {
+            alert('Could not get data from server: ' + error);
+        });
   }
 
   handleFormSubmit(event) {
